@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23rishabh - CA Student & Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+        
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 800px;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+        
+        .bio {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            opacity: 0.85;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.6s backwards;
+        }
+        
+        .skill {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            animation: fadeInUp 1s ease 0.8s backwards;
+        }
+        
+        .links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .links a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .subtitle {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hi, I'm Rishabh 👋</h1>
+        <div class="subtitle">CA Student | Web Developer | Finance Enthusiast</div>
+        
+        <div class="bio">
+            <p>I'm a Chartered Accountancy student passionate about finance, technology, and automation.</p>
+            <p>I love building web applications, exploring financial markets, and creating efficient solutions.</p>
+        </div>
+        
+        <div class="skills">
+            <span class="skill">Node.js</span>
+            <span class="skill">JavaScript</span>
+            <span class="skill">Web Development</span>
+            <span class="skill">Financial Analysis</span>
+            <span class="skill">Process Automation</span>
+        </div>
+        
+        <div class="links">
+            <a href="https://github.com/23rishabh" target="_blank">GitHub</a>
+            <a href="#">Projects</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+</body>
+</html>
