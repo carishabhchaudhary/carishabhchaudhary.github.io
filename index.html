@@ -1,160 +1,504 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rishabh Chaudhary — Resume</title>
-  <style>
-    :root{
-      --bg:#f5f5f7;
-      --text:#1a1a1a;
-      --card:#ffffff;
-      --muted:#333;
-      --radius:10px;
-      --line:#e2e2e2;
-      font-family: Inter, Arial, sans-serif;
-    }
-    body{
-      margin:0;padding:40px 20px;
-      background:var(--bg);color:var(--text);
-      display:flex;justify-content:center;
-      animation:fadeIn .5s ease;
-    }
-    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-    .container{max-width:900px;width:100%;background:var(--card);padding:32px;border-radius:var(--radius);box-shadow:0 2px 12px rgba(0,0,0,0.08);}    
-    h1{display:inline-block;font-size:28px;margin-bottom:4px;}
-    h3{display:inline-block;font-size:20px;margin-top:20px;margin-bottom:8px;}
-    h4{font-size:17px;margin-bottom:6px;}
-    .avatar{width:90px;height:90px;border-radius:8px;background:#e0e0e0;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:26px;color:#444;margin:0;}
-    ul{color:var(--muted);line-height:1.6;margin-top:6px;margin-left:20px;}
-    .divider{height:1px;background:var(--line);margin:16px 0;}
-    table{width:100%;margin-top:10px;border-collapse:collapse;font-size:15px;color:var(--muted)}
-    table td{padding:8px 4px;border-bottom:1px solid #eee}
-    strong{color:#000;font-weight:700;}
-    /* Blue accent */
-  :root{
-    --accent:#1a73e8;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rishabh Chaudhary | CA Finalist & Financial Analyst</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  /* Subtle fade-up animation */
-  .fade-up{opacity:0;transform:translateY(15px);animation:fadeUp 0.6s ease forwards;}
-  @keyframes fadeUp{to{opacity:1;transform:none;}}
+    <script>
+        tailwind.config = {
+            theme: {
+                fontFamily: {
+                    sans: ['Inter', 'sans-serif'],
+                    mono: ['JetBrains Mono', 'monospace'],
+                },
+                extend: {
+                    colors: {
+                        blue: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb', // Primary Brand Color
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'fade-in-down': 'fadeInDown 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 
-  /* Accent underline for headings */
-  h3::after{
-    content:"";
-    display:block;
-    width:100%;
-    height:3px;
-    background:var(--accent);
-    margin-top:4px;
-    border-radius:2px;
-  }
+    <style>
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af; 
+        }
 
-  /* Underline for H1 and H3 below words only */
-  h1::after{
-    content:"";
-    display:block;
-    width:100%;
-    height:3px;
-    background:var(--accent);
-    margin-top:4px;
-    border-radius:2px;
-  }
-
-</style>
+        /* Utility for animation observer */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
-<body>
-  <div class="container">
+<body class="bg-gray-50 text-gray-800 antialiased selection:bg-blue-100 selection:text-blue-900">
 
-    <div style="display:flex;align-items:center;gap:20px;margin-bottom:16px;">
-      <div class="avatar">RC</div>
-      <div>
-        <h2 style="margin:0;font-size:22px">Rishabh Chaudhary</h2>
-        <div style="color:var(--muted);font-size:15px">CA Finalist — Auditing & Tax</div>
-        <div style="color:var(--muted);font-size:14px">Mumbai, India</div>
-      </div>
-    </div>
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold tracking-tight text-gray-900 group flex items-center gap-2">
+                <span class="bg-blue-600 text-white w-8 h-8 flex items-center justify-center rounded-lg group-hover:scale-110 transition-transform">R</span>
+                <span>Rishabh.</span>
+            </a>
 
-    <div class="divider"></div>
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors">About</a>
+                <a href="#experience" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors">Experience</a>
+                <a href="#engagements" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors">Engagements</a>
+                <a href="#contact" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors">Contact</a>
+            </div>
 
-    <h3 class="fade-up">Professional Summary</h3>
-    <p class="fade-up" style="color:var(--muted);font-size:16px;line-height:1.65">
-      Experienced and detail-oriented CA Finalist with expertise in the field of Auditing, Tax consultancy, and financial analysis.
-      Skilled in ensuring regulatory compliance and risk management for diverse clients. Proficient in utilizing advanced auditing
-      tools and software. Strong communicator committed to delivering high-quality financial services.
-    </p>
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-gray-600">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
 
-    <div class="divider"></div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-100 p-6 flex-col space-y-4 shadow-lg">
+            <a href="#about" class="text-gray-600 font-medium block">About</a>
+            <a href="#experience" class="text-gray-600 font-medium block">Experience</a>
+            <a href="#engagements" class="text-gray-600 font-medium block">Engagements</a>
+            <a href="#contact" class="text-gray-600 font-medium block">Contact</a>
+        </div>
+    </nav>
 
-    <h3 class="fade-up">Professional Experience</h3>
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden bg-white">
+        <!-- Minimal Background Pattern -->
+        <div class="absolute inset-0 z-0 opacity-40">
+            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+            <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gray-100 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4"></div>
+        </div>
 
-    <h4 class="fade-up">A.T. Jain & Co <span style="color:var(--muted);font-size:14px">(January 2024 – Present)</span></h4>
-    <ul class="fade-up">
-      <li>Led the audit of a <strong>bank's head branch</strong>, including drafting the <strong>LFAR</strong> to ensure comprehensive regulatory compliance and
-      risk management.</li>
-      <li>Single handedly worked as a <strong>TDS consultant</strong> for a <strong>listed entity</strong> and its <strong>nine related parties</strong>, offering advisory on TDS-
-      related issues, return filing, and responding to demands.</li>
-      <li>Conducted audits and limited review for a publicly <strong>listed hospitality company</strong> and its <strong>subsidiaries</strong>, ensuring compliance
-      with regulatory standards.</li>
-      <li>Drafted <strong>form 15CB</strong> and its working for foreign remittances.</li>
-    </ul>
+        <div class="max-w-4xl mx-auto px-6 text-center z-10">
+            <div class="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-700 font-medium text-xs uppercase tracking-wide animate-fade-in-down">
+                <i data-lucide="check-circle" class="w-3 h-3"></i> Available for Opportunities
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6 tracking-tight animate-fade-in-up leading-tight">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-500">Rishabh Chaudhary</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-gray-500 mb-10 max-w-2xl mx-auto leading-relaxed animate-fade-in-up" style="animation-delay: 0.2s;">
+                <strong class="text-gray-900">CA Finalist</strong>. Leveraging advanced audit tools and deep regulatory knowledge to safeguard financial integrity for high-profile clients in Mumbai.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up" style="animation-delay: 0.3s;">
+                <a href="#engagements" class="px-8 py-4 rounded-xl bg-gray-900 text-white font-medium transition-all hover:bg-gray-800 hover:shadow-lg hover:-translate-y-1">
+                    View My Work
+                </a>
+                <a href="#contact" class="px-8 py-4 rounded-xl bg-white border border-gray-200 text-gray-700 font-medium transition-all hover:border-blue-500 hover:text-blue-600 hover:shadow-sm">
+                    Contact Me
+                </a>
+            </div>
+        </div>
 
-    <h4 class="fade-up">BDO India LLP <span style="color:var(--muted);font-size:14px">(February 2023 – January 2024)</span></h4>
-    <ul class="fade-up">
-      <li>Contributed to the successful execution of <strong>Statutory Audits, Limited Reviews (LR)</strong>, and <strong>Tax Audits</strong>. Led engagements
-      with <strong>Listed Entity, Non-Public Interest Entities, and Funds</strong>.</li>
-      <li><strong>Designed RCMs</strong> and <strong>tested effectiveness of controls</strong> at both entity level and process level respectively for Banks and
-      private entities.</li>
-      <li><strong>Major Financial Statement Areas (FSAs)</strong> handled are Revenue, Statutory Dues, Payroll, Taxation, PPE, Share Capital,
-      Other Income, Short Term Provisions, Cash and Bank, Trade receivables and payables etc.</li>
-      <li>Executed <strong>Journal Entry (JE) Testing</strong> to ensure accuracy and reliability in financial records.</li>
-      <li>Utilized <strong>IDEA CaseWare</strong> software to conduct a detailed analysis of loan dumps, effectively identifying and addressing
-      inconsistencies within the data and also for determining samples for <strong>Test of Details (TODs)</strong>.</li>
-    </ul>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-gray-400">
+            <i data-lucide="chevron-down"></i>
+        </div>
+    </section>
 
-    <div class="divider"></div>
+    <!-- About Section -->
+    <section id="about" class="py-24 max-w-5xl mx-auto px-6 reveal">
+        <div class="flex items-center gap-4 mb-12">
+            <span class="text-blue-600 font-mono text-xl">01.</span>
+            <h2 class="text-3xl font-bold text-gray-900">About Me</h2>
+            <div class="h-px bg-gray-200 flex-grow max-w-xs"></div>
+        </div>
+        
+        <div class="grid md:grid-cols-5 gap-12 items-start">
+            <div class="md:col-span-3 space-y-6 text-gray-600 text-lg leading-relaxed">
+                <p>
+                    I am a detail-oriented <strong class="text-blue-700">CA Finalist</strong> with a proven track record in financial auditing and tax consultancy. My expertise lies in ensuring regulatory compliance and drafting comprehensive reports for diverse clients, from major banks to listed entities.
+                </p>
+                <p>
+                    Beyond the numbers, I am proficient in leveraging technology like <span class="bg-gray-100 text-gray-800 px-1 py-0.5 rounded font-mono text-base">IDEA CaseWare</span> to analyze data and mitigate risks effectively.
+                </p>
+                
+                <div class="pt-6">
+                    <h3 class="text-gray-900 font-semibold mb-4 flex items-center gap-2">
+                        <i data-lucide="book-open" class="w-5 h-5 text-blue-600"></i>
+                        Qualifications
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center text-sm border-b border-gray-100 pb-2">
+                            <div class="flex flex-col">
+                                <span class="text-gray-800 font-medium">Chartered Accountancy (Finalist)</span>
+                                <span class="text-gray-500 text-xs">Institute of Chartered Accountants of India</span>
+                            </div>
+                            <span class="text-blue-600 font-medium bg-blue-50 px-2 py-0.5 rounded text-xs">Ongoing</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm border-b border-gray-100 pb-2">
+                            <div class="flex flex-col">
+                                <span class="text-gray-800 font-medium">Bachelor of Commerce</span>
+                                <span class="text-gray-500 text-xs">Vartak College of Commerce</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-gray-700 block font-medium">9.55 CGPA</span>
+                                <span class="text-gray-400 text-xs">2020 - 2023</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center text-sm border-b border-gray-100 pb-2">
+                            <div class="flex flex-col">
+                                <span class="text-gray-800 font-medium">CA Intermediate (Group 2)</span>
+                                <span class="text-gray-500 text-xs">ICAI</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-gray-700 block font-medium">56.25%</span>
+                                <span class="text-gray-400 text-xs">Nov 2022</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center text-sm border-b border-gray-100 pb-2">
+                            <div class="flex flex-col">
+                                <span class="text-gray-800 font-medium">CA Intermediate (Group 1)</span>
+                                <span class="text-gray-500 text-xs">ICAI</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-gray-700 block font-medium">51.25%</span>
+                                <span class="text-gray-400 text-xs">May 2022</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center text-sm border-b border-gray-100 pb-2">
+                            <div class="flex flex-col">
+                                <span class="text-gray-800 font-medium">CA Foundation</span>
+                                <span class="text-gray-500 text-xs">ICAI</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-gray-700 block font-medium">65.25%</span>
+                                <span class="text-gray-400 text-xs">Nov 2020</span>
+                            </div>
+                        </div>
+                         <div class="flex justify-between items-center text-sm border-b border-gray-100 pb-2">
+                            <div class="flex flex-col">
+                                <span class="text-gray-800 font-medium">Higher Secondary (HSC)</span>
+                                <span class="text-gray-500 text-xs">Vedant Junior College</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-gray-700 block font-medium">90.62%</span>
+                                <span class="text-gray-400 text-xs">2019 - 2020</span>
+                            </div>
+                        </div>
+                         <div class="flex justify-between items-center text-sm border-b border-gray-100 pb-2">
+                            <div class="flex flex-col">
+                                <span class="text-gray-800 font-medium">Secondary School (SSC)</span>
+                                <span class="text-gray-500 text-xs">St Sebastian's English High School</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-gray-700 block font-medium">93.00%</span>
+                                <span class="text-gray-400 text-xs">2017 - 2018</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="md:col-span-2">
+                <!-- Skills Tags -->
+                <div>
+                     <h3 class="text-gray-900 font-semibold mb-4 text-sm uppercase tracking-wider">Core Competencies</h3>
+                     <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-white border border-gray-200 text-gray-600 rounded-md text-sm hover:border-blue-400 hover:text-blue-700 transition-colors">Statutory Audit</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 text-gray-600 rounded-md text-sm hover:border-blue-400 hover:text-blue-700 transition-colors">Tax Consultancy</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 text-gray-600 rounded-md text-sm hover:border-blue-400 hover:text-blue-700 transition-colors">IDEA CaseWare</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 text-gray-600 rounded-md text-sm hover:border-blue-400 hover:text-blue-700 transition-colors">Risk Management</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 text-gray-600 rounded-md text-sm hover:border-blue-400 hover:text-blue-700 transition-colors">Tally ERP 9</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 text-gray-600 rounded-md text-sm hover:border-blue-400 hover:text-blue-700 transition-colors">MS Excel</span>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <h3 class="fade-up">Education</h3>
-    <table class="fade-up">
-      <tr><td><strong>Examination</strong></td><td><strong>Institute</strong></td><td><strong>Year</strong></td><td><strong>Result</strong></td></tr>
-      <tr><td>Bachelor Of Commerce</td><td>Vartak College of Commerce</td><td>2020–23</td><td>9.55 CGPA</td></tr>
-      <tr><td>CA Intermediate [Group 2]</td><td>The Institute of Chartered Accountants of India</td><td>Nov-22</td><td>56.25%</td></tr>
-      <tr><td>CA Intermediate [Group 1]</td><td>The Institute of Chartered Accountants of India</td><td>May-22</td><td>51.25%</td></tr>
-      <tr><td>CA Foundation</td><td>The Institute of Chartered Accountants of India</td><td>Nov-20</td><td>65.25%</td></tr>
-      <tr><td>Higher Secondary Certificate [HSC]</td><td>Vedant Junior College of Commerce</td><td>2019–20</td><td>90.62%</td></tr>
-      <tr><td>Secondary School Certificate [SSC]</td><td>St Sebastian's English High School</td><td>2017–18</td><td>93.00%</td></tr>
-    </table>
+    <!-- Experience Section -->
+    <section id="experience" class="py-24 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-6 reveal">
+            <div class="flex items-center gap-4 mb-12">
+                <span class="text-blue-600 font-mono text-xl">02.</span>
+                <h2 class="text-3xl font-bold text-gray-900">Experience</h2>
+                <div class="h-px bg-gray-300 flex-grow max-w-xs"></div>
+            </div>
 
-    <div class="divider"></div>
+            <div class="space-y-12">
+                <!-- Job 1 -->
+                <div class="relative pl-8 border-l-2 border-gray-200 hover:border-blue-500 transition-colors group">
+                    <div class="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-white border-2 border-gray-300 group-hover:border-blue-500 transition-all"></div>
+                    
+                    <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
+                        <h3 class="text-xl font-bold text-gray-900">Industrial Trainee / Audit Assistant</h3>
+                        <span class="text-sm font-mono text-blue-600 bg-blue-50 px-2 py-1 rounded">Jan 2024 - Present</span>
+                    </div>
+                    <h4 class="text-lg text-gray-600 mb-4 font-medium">A.T. Jain & Co</h4>
+                    
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3 text-gray-600 text-sm leading-relaxed">
+                            <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0"></span>
+                            <span>Led the audit of a bank's head branch, including drafting the <strong>Long Form Audit Report (LFAR)</strong> to ensure comprehensive regulatory compliance and risk management.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-600 text-sm leading-relaxed">
+                            <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0"></span>
+                            <span>Solely managed <strong>TDS consultancy</strong> for a listed entity and its nine related parties, handling advisory on complex issues, return filing, and responding to tax demands.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-600 text-sm leading-relaxed">
+                            <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0"></span>
+                            <span>Conducted <strong>Statutory Audits and Limited Reviews</strong> for a publicly listed hospitality company, verifying revenue recognition and statutory compliance.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-600 text-sm leading-relaxed">
+                            <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0"></span>
+                            <span>Drafted <strong>Form 15CA-15CB</strong> and prepared working papers for foreign remittances.</span>
+                        </li>
+                    </ul>
+                </div>
 
-    <h3 class="fade-up">Skills</h3>
-    <ul class="fade-up">
-      <li><strong>MS OFFICE</strong> (Excel, Word, PowerPoint, Access)</li>
-      <li><strong>Computer Assisted Audit Techniques (CAATs)</strong> - <strong>IDEA CaseWare</strong></li>
-      <li><strong>E-TDS Software</strong> by TaxPrint</li>
-      <li><strong>Tally Erp 9</strong> and <strong>Prime</strong></li>
-    </ul>
+                <!-- Job 2 -->
+                <div class="relative pl-8 border-l-2 border-gray-200 hover:border-blue-500 transition-colors group">
+                    <div class="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-white border-2 border-gray-300 group-hover:border-blue-500 transition-all"></div>
+                    
+                    <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
+                        <h3 class="text-xl font-bold text-gray-900">Audit Assistant</h3>
+                        <span class="text-sm font-mono text-blue-600 bg-blue-50 px-2 py-1 rounded">Feb 2023 - Jan 2024</span>
+                    </div>
+                    <h4 class="text-lg text-gray-600 mb-4 font-medium">BDO India LLP</h4>
+                    
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3 text-gray-600 text-sm leading-relaxed">
+                            <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0"></span>
+                            <span>Contributed to the successful execution of <strong>Statutory Audits, Limited Reviews (LR), and Tax Audits</strong> for Listed Entities, Non-Public Interest Entities, and Funds.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-600 text-sm leading-relaxed">
+                            <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0"></span>
+                            <span>Designed <strong>Risk Control Matrices (RCMs)</strong> and tested the effectiveness of controls at both entity and process levels for Banks and private entities.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-600 text-sm leading-relaxed">
+                            <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0"></span>
+                            <span>Handled major <strong>Financial Statement Areas (FSAs)</strong> including Revenue, Statutory Dues, Payroll, Taxation, PPE, Share Capital, and Short Term Provisions.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-600 text-sm leading-relaxed">
+                            <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0"></span>
+                            <span>Executed <strong>Journal Entry (JE) Testing</strong> to ensure accuracy and reliability in financial records.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-600 text-sm leading-relaxed">
+                            <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0"></span>
+                            <span>Utilized <strong>IDEA CaseWare software</strong> to conduct detailed analysis of loan dumps, identifying data inconsistencies and determining samples for Test of Details (TODs).</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="divider"></div>
+    <!-- Engagements Section -->
+    <section id="engagements" class="py-24 max-w-6xl mx-auto px-6 reveal">
+        <div class="flex items-center gap-4 mb-12">
+            <span class="text-blue-600 font-mono text-xl">03.</span>
+            <h2 class="text-3xl font-bold text-gray-900">Key Engagements</h2>
+            <div class="h-px bg-gray-200 flex-grow max-w-xs"></div>
+        </div>
 
-    <h3 class="fade-up">Courses</h3>
-    <ul class="fade-up">
-      <li>Completed <strong>AICITSS- Advanced IT</strong></li>
-      <li>Completed 90 hours <strong>Orientation training and Information Technology</strong></li>
-      <li><strong>Microsoft Excel for Beginners</strong> by CA Monk</li>
-      <li><strong>Accounting Fundamentals</strong> by Corporate Finance Institute</li>
-      <li><strong>Microsoft Word Tutorial</strong> by Corporate Finance Institute</li>
-      <li><strong>Reading Financial Statements</strong> by Corporate Finance Institute</li>
-    </ul>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Project 1 (A.T. Jain) -->
+            <div class="group bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col">
+                <div class="h-40 bg-blue-50 relative overflow-hidden flex items-center justify-center">
+                    <div class="absolute w-32 h-32 bg-blue-100 rounded-full blur-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+                    <div class="relative z-10 flex flex-col items-center">
+                        <div class="bg-white p-3 rounded-xl shadow-sm mb-2">
+                             <i data-lucide="landmark" class="w-8 h-8 text-blue-600"></i>
+                        </div>
+                        <span class="text-xs font-bold text-blue-400 uppercase tracking-widest">Audit</span>
+                    </div>
+                </div>
+                <div class="p-5 flex-grow">
+                    <h3 class="text-base font-bold text-gray-900 mb-2">Bank Branch Audit</h3>
+                    <p class="text-gray-500 text-xs mb-3 leading-relaxed">
+                        Led audit for a bank's head branch. Delivered the Long Form Audit Report (LFAR) ensuring strict RBI compliance.
+                    </p>
+                    <div class="mt-auto flex gap-2">
+                        <span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-full">LFAR</span>
+                        <span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-full">Compliance</span>
+                    </div>
+                </div>
+            </div>
 
-    <div class="divider"></div>
+            <!-- Project 2 (A.T. Jain) -->
+            <div class="group bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col">
+                <div class="h-40 bg-indigo-50 relative overflow-hidden flex items-center justify-center">
+                    <div class="absolute w-32 h-32 bg-indigo-100 rounded-full blur-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+                    <div class="relative z-10 flex flex-col items-center">
+                        <div class="bg-white p-3 rounded-xl shadow-sm mb-2">
+                             <i data-lucide="file-text" class="w-8 h-8 text-indigo-600"></i>
+                        </div>
+                         <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest">Taxation</span>
+                    </div>
+                </div>
+                <div class="p-5 flex-grow">
+                    <h3 class="text-base font-bold text-gray-900 mb-2">Listed Entity TDS</h3>
+                    <p class="text-gray-500 text-xs mb-3 leading-relaxed">
+                        Managed high-volume TDS filings and advisory for a listed entity and 9 related parties.
+                    </p>
+                    <div class="mt-auto flex gap-2">
+                         <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded-full">Advisory</span>
+                        <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded-full">Filing</span>
+                    </div>
+                </div>
+            </div>
 
-    <h3 class="fade-up">Languages</h3>
-    <ul class="fade-up">
-      <li>English</li>
-      <li>Hindi</li>
-      <li>Marathi</li>
-    </ul>
+            <!-- Project 3 (BDO) -->
+            <div class="group bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col">
+                <div class="h-40 bg-teal-50 relative overflow-hidden flex items-center justify-center">
+                     <div class="absolute w-32 h-32 bg-teal-100 rounded-full blur-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+                    <div class="relative z-10 flex flex-col items-center">
+                         <div class="bg-white p-3 rounded-xl shadow-sm mb-2">
+                             <i data-lucide="shield-check" class="w-8 h-8 text-teal-600"></i>
+                        </div>
+                         <span class="text-xs font-bold text-teal-400 uppercase tracking-widest">Controls</span>
+                    </div>
+                </div>
+                <div class="p-5 flex-grow">
+                    <h3 class="text-base font-bold text-gray-900 mb-2">Risk Control Matrices</h3>
+                    <p class="text-gray-500 text-xs mb-3 leading-relaxed">
+                        Designed RCMs and tested controls (Entity & Process Level) for Banks and Private entities at BDO.
+                    </p>
+                    <div class="mt-auto flex gap-2">
+                        <span class="text-[10px] font-bold text-teal-600 bg-teal-50 px-2 py-1 rounded-full">RCM</span>
+                        <span class="text-[10px] font-bold text-teal-600 bg-teal-50 px-2 py-1 rounded-full">Risk</span>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Project 4 (BDO) -->
+             <div class="group bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col">
+                <div class="h-40 bg-sky-50 relative overflow-hidden flex items-center justify-center">
+                     <div class="absolute w-32 h-32 bg-sky-100 rounded-full blur-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+                    <div class="relative z-10 flex flex-col items-center">
+                         <div class="bg-white p-3 rounded-xl shadow-sm mb-2">
+                             <i data-lucide="bar-chart-2" class="w-8 h-8 text-sky-600"></i>
+                        </div>
+                         <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Analytics</span>
+                    </div>
+                </div>
+                <div class="p-5 flex-grow">
+                    <h3 class="text-base font-bold text-gray-900 mb-2">Data Analytics Audit</h3>
+                    <p class="text-gray-500 text-xs mb-3 leading-relaxed">
+                        Utilized IDEA CaseWare for detailed analysis of loan dumps and identifying inconsistencies.
+                    </p>
+                    <div class="mt-auto flex gap-2">
+                        <span class="text-[10px] font-bold text-sky-600 bg-sky-50 px-2 py-1 rounded-full">IDEA</span>
+                        <span class="text-[10px] font-bold text-sky-600 bg-sky-50 px-2 py-1 rounded-full">TODs</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 max-w-2xl mx-auto text-center px-6 reveal">
+        <span class="text-blue-600 font-mono text-lg mb-4 block">05. What's Next?</span>
+        <h2 class="text-4xl font-bold text-gray-900 mb-6">Get In Touch</h2>
+        <p class="text-gray-500 text-lg mb-10 leading-relaxed">
+            I am currently open to new opportunities in Mumbai. Feel free to reach out for collaborations or inquiries.
+        </p>
+        
+        <div class="flex justify-center gap-6 mb-12">
+            <a href="mailto:chaudharyrishabh91@gmail.com" class="p-4 rounded-full bg-gray-100 text-gray-600 hover:bg-blue-600 hover:text-white hover:-translate-y-1 transition-all">
+                <i data-lucide="mail" class="w-6 h-6"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/23rishabhchaudhary" target="_blank" class="p-4 rounded-full bg-gray-100 text-gray-600 hover:bg-[#0077b5] hover:text-white hover:-translate-y-1 transition-all">
+                <i data-lucide="linkedin" class="w-6 h-6"></i>
+            </a>
+        </div>
+
+        <a href="mailto:chaudharyrishabh91@gmail.com" class="inline-block px-8 py-4 bg-gray-900 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
+            Say Hello
+        </a>
+
+        <div class="mt-16 text-gray-400 text-sm font-mono">
+            <p>Designed by Rishabh Chaudhary</p>
+        </div>
+    </section>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // 1. Initialize Icons
+        lucide.createIcons();
+
+        // 2. Scroll Animation (Intersection Observer)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // 3. Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
+    </script>
 </body>
 </html>
